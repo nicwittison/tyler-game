@@ -114,5 +114,5 @@ body {
 
 /* Hide controls on desktop/large devices */
 @media (hover: hover) and (pointer: fine) {
-  /* #controls { display: none; } */
+  #controls { display: none; }
 }
