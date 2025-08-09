@@ -1,0 +1,118 @@
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: #0d1224 linear-gradient(#0d1224, #111831 25%, #0b0f1e);
+  color: #e9eef8;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  display: grid;
+  place-items: center;
+}
+#game-wrap {
+  position: relative;
+  width: min(96vw, 1100px);
+  aspect-ratio: 16 / 9;
+  max-height: 92vh;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.06);
+  touch-action: none; /* prevent scroll/zoom during gameplay */
+  -webkit-user-select: none; user-select: none;
+}
+#game {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #a6c9ef;
+  image-rendering: optimizeQuality;
+}
+#hud {
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  padding: 10px 14px;
+  pointer-events: none;
+  z-index: 2;
+}
+#hud .hud-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  text-shadow: 0 2px 2px rgba(0,0,0,.25);
+}
+#hud .small { font-size: 12px; opacity: .9; margin-top: 4px; }
+#money, #lights, #goal {
+  background: rgba(0,0,0,.35);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+#overlay {
+  position: absolute;
+  inset: 0;
+  display: none; /* hidden by default */
+  place-items: center;
+  background: rgba(0,0,0,.4);
+  backdrop-filter: blur(3px);
+  color: #fff;
+  text-align: center;
+  padding: 24px;
+  z-index: 3;
+}
+#overlay.visible { display: grid; }
+#overlay .panel {
+  background: rgba(20,25,45,.9);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 12px;
+  padding: 24px 22px;
+  max-width: 520px;
+  box-shadow: 0 10px 40px rgba(0,0,0,.5);
+}
+#overlay h1 { margin: 0 0 12px 0; font-size: 28px; }
+#overlay p { margin: 0 0 14px 0; line-height: 1.4; }
+#overlay button {
+  appearance: none; border: none; padding: 10px 14px;
+  border-radius: 10px; background: #ffd600; color: #111;
+  font-weight: 700; cursor: pointer; transition: transform .05s ease;
+}
+#overlay button:active { transform: translateY(1px); }
+
+/* Mobile touch controls */
+#controls {
+  position: absolute;
+  inset: 0;
+  pointer-events: none; /* clusters are passive; buttons are interactive */
+  z-index: 2;
+}
+#controls .cluster { position: absolute; bottom: 14px; }
+#controls .cluster.left { left: 14px; }
+#controls .cluster.right { right: 14px; }
+#controls .cluster.center { left: 50%; transform: translateX(-50%); }
+
+#controls button {
+  pointer-events: auto;
+  appearance: none; border: 0;
+  background: rgba(0,0,0,.35);
+  color: #e9eef8;
+  font-weight: 800;
+  font-size: 22px;
+  border-radius: 16px;
+  padding: 16px 20px;
+  min-width: 64px;
+  min-height: 64px;
+  touch-action: none;
+}
+#controls button.circle { border-radius: 999px; width: 66px; height: 66px; padding: 0; }
+#controls button.pill { border-radius: 999px; padding: 14px 22px; min-height: 54px; }
+#controls button.mini {
+  position: absolute; top: 10px; left: 10px; padding: 8px 10px; min-width: 0; min-height: 0;
+  font-size: 18px; background: rgba(0,0,0,.4);
+}
+#controls button:active { transform: translateY(1px); }
+
+/* Hide controls on desktop/large devices */
+@media (hover: hover) and (pointer: fine) {
+  #controls { display: none; }
+}

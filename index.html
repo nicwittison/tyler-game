@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Power Run — Lit Electrical</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="game-wrap">
+    <canvas id="game" aria-label="Game canvas"></canvas>
+    <div id="hud">
+      <div class="hud-row">
+        <div id="money">$0</div>
+        <div id="lights">Lights: 0/10</div>
+        <div id="goal">Goal: $1000 before JB Hi-Fi</div>
+      </div>
+      <div class="hud-row small">
+        <span>Move: ← → or A/D • Plug in: E • Reset: R (buttons on mobile)</span>
+      </div>
+    </div>
+
+    <!-- Touch Controls -->
+    <div id="controls" aria-hidden="true">
+      <div class="cluster left">
+        <button id="btn-left" class="circle" aria-label="Move left">◀</button>
+      </div>
+      <div class="cluster right">
+        <button id="btn-right" class="circle" aria-label="Move right">▶</button>
+      </div>
+      <div class="cluster center">
+        <button id="btn-plug" class="pill" aria-label="Plug in">⚡ Plug</button>
+      </div>
+      <button id="btn-reset" class="mini" aria-label="Reset">↺</button>
+    </div>
+
+    <div id="overlay"></div>
+  </div>
+
+  <script>window.GAME_ASSETS = { face: "assets/tyler_face.jpg" };</script>
+  <script src="game.js"></script>
+</body>
+</html>
