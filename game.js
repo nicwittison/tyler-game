@@ -406,11 +406,12 @@
     const closeToStore = (player.x > storeX - 20);
     if (closeToStore) {
       if (player.money >= 1000) {
+        ato.active = false;
         showOverlay(`
           <h1>Nice work!</h1>
           <p>You made it to JB Hi-Fi with <strong>$${player.money}</strong> and bought the laptop.</p>
           <p>Lights switched on: <strong>${player.lightsOn}</strong>.</p>
-          <p><button id="play-again">Play again</button></p>
+          <p><button id="play-again">Reload to try again</button></p>
         `);
         document.getElementById("play-again").onclick = resetGame;
       } else {

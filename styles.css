@@ -12,7 +12,7 @@ body {
 #game-wrap {
   position: relative;
   width: min(96vw, 1100px);
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1;
   max-height: 92vh;
   border-radius: 12px;
   overflow: hidden;
@@ -86,7 +86,7 @@ body {
   pointer-events: none; /* clusters are passive; buttons are interactive */
   z-index: 2;
 }
-#controls .cluster { position: absolute; bottom: 14px; }
+#controls .cluster { position: absolute; bottom: 30px; }
 #controls .cluster.left { left: 14px; }
 #controls .cluster.right { right: 14px; }
 #controls .cluster.center { left: 50%; transform: translateX(-50%); }
@@ -107,12 +107,12 @@ body {
 #controls button.circle { border-radius: 999px; width: 66px; height: 66px; padding: 0; }
 #controls button.pill { border-radius: 999px; padding: 14px 22px; min-height: 54px; }
 #controls button.mini {
-  position: absolute; top: 10px; left: 10px; padding: 8px 10px; min-width: 0; min-height: 0;
+  position: absolute; top: 120px; left: 10px; padding: 8px 10px; min-width: 0; min-height: 0;
   font-size: 18px; background: rgba(0,0,0,.4);
 }
 #controls button:active { transform: translateY(1px); }
 
 /* Hide controls on desktop/large devices */
 @media (hover: hover) and (pointer: fine) {
-  #controls { display: none; }
+  /* #controls { display: none; } */
 }
